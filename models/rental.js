@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     RoomId: DataTypes.INTEGER,
     from_date: DataTypes.DATE,
     to_date: DataTypes.DATE,
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+    price_total: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
