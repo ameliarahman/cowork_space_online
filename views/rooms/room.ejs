@@ -23,7 +23,7 @@
                                 <%= index+1%>
                             </td>
                             <td>
-                                <img src="/images/<%=room.photo_url%>" style="width : 30%">
+                                <img src="/images/<%=room.photo_url%>" style="width : 50%">
                             </td>
                             <td>
                                 <%= room.name%>
@@ -39,10 +39,10 @@
                                     <%= room.city%>
                             </td>
                             <td>
-                                <a href="/rooms/<%= room.id%>/edit">Edit</a>
+                                <a href="/rooms/edit/<%= room.id%>">Edit</a>
                             </td>
                             <td>
-                                <a href="/rooms/<%= room.id%>/delete">Delete</a>
+                                <a href="/rooms/delete/<%= room.id%>">Delete</a>
                             </td>
                         </tr>
                         <%})%>

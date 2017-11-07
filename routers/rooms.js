@@ -20,18 +20,6 @@ router.get('/add', function (req, res) {
 router.post('/add', upload.single('room_pict'), function (req, res) {
 
     if (req.file) {
-        // let filePicture;
-        // switch (req.file.mimetype) {
-        //     case 'image/jpeg':
-        //         filePicture = req.file.filename + '.jpeg'
-        //         break;
-        //     case 'image/png':
-        //         filePicture = req.file.filename + '.png'
-        //         break;
-        //     default:
-        //         break;
-        // }
-
         console.log(req.file, "====", req.body)
         Model.Room.create({
             name: req.body.name,
@@ -61,13 +49,76 @@ router.post('/add', upload.single('room_pict'), function (req, res) {
     }
 })
 
-router.get('/edit', function (req, res) {
+router.get('/edit/:id', function (req, res) {
+    Model.Room.findById(req.params.id).then((dataRoom) => {
+        //console.log(dataRoom)
+        res.render('rooms/edit', { dataRoom: dataRoom, pageTitle: "Edit Room" })
+    }).catch((reason) => {
+        res.redirect('/rooms')
+    })
+})
+
+router.post('/edit/:id', upload.single('room_pict'), function (req, res) {
+    if (req.file) {
+        Model.Room.update({
+            name: req.body.name,
+            address: req.body.address,
+            city: req.body.city,
+            capacity: req.body.capacity,
+            facility: req.body.facility,
+            photo_url: req.file.filename,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }, {
+                where: {
+                    id: req.params.id
+                }
+            }).then(() => {
+                res.redirect('/rooms')
+            }).catch((reason) => {
+                res.redirect(`/edit/${req.params.id}`)
+            })
+    } else {
+        //console.log("Haloooooooooooooooooooooooooooooooo")
+        Model.Room.findById(req.params.id).then((dataRoom) => {
+            let pict = dataRoom.photo_url
+            Model.Room.update({
+                name: req.body.name,
+                address: req.body.address,
+                city: req.body.city,
+                capacity: req.body.capacity,
+                facility: req.body.facility,
+                photo_url: pict,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }, {
+                    where: {
+                        id: req.params.id
+                    }
+                }).then(() => {
+                    res.redirect('/rooms')
+                }).catch((reason) => {
+                    res.redirect(`/edit/${req.params.id}`)
+                })
+        })
+    }
+    // console.log(req.body)
 
 })
 
-router.post('/edit', function (req, res) {
-
+router.get('/delete/:id', function (req, res) {
+    Model.Room.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        res.redirect('/rooms')
+    }).catch((reason) => {
+        res.send(reason)
+    })
 })
+
+
 
 
 module.exports = router
