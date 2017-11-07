@@ -1,9 +1,56 @@
-<html>
+<%- include ../partials/head%>
+    <% include ../partials/menu%>
 
-<head>
-    <title>
-        Data Building
-    </title>
-</head>
+        <div class="page-title">
+            <h2>Co-Working Space</h2>
+        </div>
 
-</html>
+        <div class="main-table">
+            <table>
+                <tr>
+                    <th>No</th>
+                    <th>Photo</th>
+                    <th>Building Name</th>
+                    <th>Price</th>
+                    <th>Facility</th>
+                    <th>Address</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                <% dataRooms.forEach((room, index)=>{%>
+                    <tr>
+                        <td>
+                            <%= index+1%>
+                        </td>
+                        <td>
+                            <%= room.photo_url%>
+                        </td>
+                        <td>
+                            <%= room.name%>
+                        </td>
+                        <td>
+                            <%= room.price%>/day
+                        </td>
+                        <td>
+                            <%= room.facility%>
+                        </td>
+                        <td>
+                            <%= room.address%>,
+                                <%= room.city%>
+                        </td>
+                        <td>
+                            <a href="/rooms/<%= room.id%>/edit">Edit</a>
+                        </td>
+                        <td>
+                            <a href="/rooms/<%= room.id%>/delete">Delete</a>
+                        </td>
+                    </tr>
+                    <%})%>
+
+            </table>
+
+        </div>
+        <a href="/rooms/add">
+                Add Building
+            </a>
+
+<%- include ../partials/footer%>

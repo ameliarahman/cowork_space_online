@@ -4,7 +4,7 @@ const models = require('../models')
 
 router.get('/', (req, res) =>{
 	models.User.findAll().then(users=> {
-		res.render('users/list', {users})
+		res.render('users/list', {users, pageTitle:"Data Users"})
 	})
 })
 
