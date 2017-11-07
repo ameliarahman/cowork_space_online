@@ -41,4 +41,8 @@ router.post('/edit/:id', (req, res) =>{
 })
 
 
+router.get('/signup', (req, res) => {
+	res.render('login/signup', {pageTitle:"Signup"})
+})
+
 module.exports = router

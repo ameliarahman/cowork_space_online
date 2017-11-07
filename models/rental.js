@@ -14,5 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+
+  Rental.asscociate = (models)=>{
+    Rental.belongsTo(models.Room)
+    Rental.belongsTo(models.User)
+  }
   return Rental;
 };
