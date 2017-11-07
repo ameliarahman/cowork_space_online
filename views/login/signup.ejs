@@ -1,0 +1,35 @@
+<%- include('../partials/head',{})%>
+<body>
+
+<div class="container" id="signup">
+	<form >
+		<div class="form-group">
+	    <label>Username:</label>
+	    <input type="text" class="form-control" name="username" placeholder="Username here" required autofocus>
+	  </div>
+	  <div class="form-group">
+	    <label for="pwd">Password:</label>
+	    <input type="password" class="form-control" name="password" placeholder="Password here" required autofocus>
+	  </div>
+	  <div class="form-group">
+	    <label>Firstname:</label>
+	    <input type="text" class="form-control" name="first_name" placeholder="firstname here" required autofocus>
+	  </div>
+	  <div class="form-group">
+	    <label>Lastname:</label>
+	    <input type="text" class="form-control" name="last_name" placeholder="lastname here" required autofocus>
+	  </div>
+	  <div class="form-group">
+	    <label for="email">Email:</label>
+	    <input type="email" class="form-control" name="email" placeholder="email here" required autofocus>
+	  </div>
+	  <div class="form-group">
+	    <label >No.Telp:</label>
+	    <input type="text" class="form-control" name="no_telp" placeholder="telp here" required autofocus>
+	  </div>
+	  
+	  <button type="submit" class="btn btn btn-primary">Save</button>
+	</form>
+</div>
+
+ <%- include('../partials/footer',{})%>
