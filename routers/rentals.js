@@ -11,7 +11,8 @@ router.get('/', function (req, res) {
     res.render('rentals/show', { pageTitle: 'Booking', dataRooms: '' })
 })
 
-router.post('/', function (req, res) {
+router.post('/search', function (req, res) {
+    // res.send(req.body)
     Model.Room.findAll({
         where: {
             city: {

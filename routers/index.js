@@ -11,11 +11,13 @@ router.get('/', function (req, res) {
     Model.Room.findAll({
         limit: 4
     }).then((dataRooms) => {
+        // res.send(dataRooms)
         res.render('index/index', { pageTitle: 'Home', dataRooms: dataRooms })
     }).catch((reason) => {
         res.redirect('/')
     })
-    //res.render('index', { pageTitle: 'Home' })
+
+    // res.render('index/index', { pageTitle: 'Home' })
 })
 
 router.get('/details/:id', function (req, res) {
