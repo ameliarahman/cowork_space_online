@@ -5,6 +5,7 @@ const encript = require('../helpers/encript')
 
 router.get('/', (req, res) =>{
 	models.User.findAll().then(users=> {
+		// res.send(users)
 		res.render('users/list', {users, pageTitle:"Data Users"})
 	})
 })
