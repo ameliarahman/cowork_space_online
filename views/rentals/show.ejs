@@ -1,14 +1,30 @@
 <%- include ../partials/head%>
     <%- include ../component/menu_search%>
-            <div id="wrapper">
-                <section class="main items">
-                   <% if(dataRooms.length > 0){ 
+        <div id="wrapper">
+            <section class="main items">
+                <% if(dataRooms.length > 0){ 
                         dataRooms.forEach((room)=>{%>
-                        <article class="item">
-                            <header>
-                                <a href="/rooms/details/<%= room.id%>">
+                    <article class="item">
+                        <header>
+                            <a href="/rooms/details/<%= room.id%>">
                                     <img src="/images/<%=room.photo_url%>" alt="<%= room.name%>">
                                 </a>
+<<<<<<< HEAD
+                            <h3>
+                                <%= room.name%>
+                            </h3>
+                        </header>
+                        <p>
+                            <%= room.address%>,
+                                <%= room.city%>
+                        </p>
+                        <ul class="actions">
+                            <li><a href="/rooms/details/<%= room.id%>" class="button">More</a></li>
+                        </ul>
+                    </article>
+                    <% })}%>
+            </section>
+=======
                                 <h3>
                                     <%= room.name%>
                                 </h3>
@@ -23,5 +39,6 @@
                         </article>
                         <% })}%>
                 </section>
+>>>>>>> 84e059d4be9ae312e95ae3a394447b8f1465b482
 
-                <%- include ../partials/footer%>
+            <%- include ../partials/footer%>
