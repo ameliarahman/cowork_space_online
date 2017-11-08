@@ -33,13 +33,13 @@ router.get('/:id', function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
         res.render('rentals/booking', { pageTitle: "Booking", dataRoom: dataRoom })
     })
-
 })
 
 router.post('/:id', function (req, res) {
     sendEmail(req.body)
     res.redirect('/booking')
 })
+
 
 // router.get('/:id', function (req, res) {
 //     Model.Room.findById({
