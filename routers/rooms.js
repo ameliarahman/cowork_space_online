@@ -20,7 +20,7 @@ router.get('/add', function (req, res) {
 router.post('/add', upload.single('room_pict'), function (req, res) {
 
     if (req.file) {
-        console.log(req.file, "====", req.body)
+        //console.log(req.file, "====", req.body)
         Model.Room.create({
             name: req.body.name,
             address: req.body.address,
@@ -40,6 +40,7 @@ router.post('/add', upload.single('room_pict'), function (req, res) {
             city: req.body.city,
             capacity: req.body.capacity,
             facility: req.body.facility,
+            price: req.body.price,
             photo_url: `default.png`,
             createdAt: new Date(),
             updatedAt: new Date()
@@ -62,6 +63,7 @@ router.post('/edit/:id', upload.single('room_pict'), function (req, res) {
     if (req.file) {
         Model.Room.update({
             name: req.body.name,
+            price: req.body.price,
             address: req.body.address,
             city: req.body.city,
             capacity: req.body.capacity,
@@ -86,6 +88,7 @@ router.post('/edit/:id', upload.single('room_pict'), function (req, res) {
                 name: req.body.name,
                 address: req.body.address,
                 city: req.body.city,
+                price: req.body.price,
                 capacity: req.body.capacity,
                 facility: req.body.facility,
                 photo_url: pict,
