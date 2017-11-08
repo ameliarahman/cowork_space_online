@@ -38,14 +38,15 @@
                 </article>
             </section>
 
-<<<<<<< HEAD
-<% include ../partials/footer%>
-=======
             <%if(Session.isLogin){%>
               <% include ../rooms/booking%>
+            <%}%>
+
+            <%if(Session.onBooking){%>
+              <% include ../rooms/check_invoice%>
             <%}%>
 
             
 
             <% include ../partials/footer%>
->>>>>>> 84e059d4be9ae312e95ae3a394447b8f1465b482
+

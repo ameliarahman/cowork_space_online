@@ -41,18 +41,36 @@ router.post('/:id', function (req, res) {
 })
 
 
-// router.get('/:id', function (req, res) {
-//     Model.Room.findById({
-//         where: {
-//             id: req.params.id
-//         }
-//     }).then((dataRoom) => {
-//         res.render('rentals/booking', { pageTitle: "Booking Room", dataRoom: dataRoom })
-//     }).catch((reason) => {
-//         res.send(reason)
-//     })
+router.post('/details/:id', (req, res) => {
+    Model.Rental.create({
 
-// })
+    })
+})
+
+router.get('/details/:id', function (req, res) {
+    Model.Room.findById(req.params.id).then((dataRoom) => {
+
+        console.log(req.query.username)
+        if(req.query.username){
+           
+            Model.User.findById(req.session.user_id).then(user =>{
+                req.session.onBooking = true
+                 console.log(req.session)
+                res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session : req.session, user })
+            })
+
+        }
+        else{
+            console.log('masuk else')
+            res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session : req.session })
+
+        }
+
+    }).catch((reason) => {
+        res.send(reason)
+    })
+})
+
 
 
 module.exports = router

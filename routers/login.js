@@ -19,7 +19,7 @@ router.post('/', (req, res) =>{
 		if(user){
 			decript(req.body.password, user.password).then(hasil =>{
 				if(hasil){
-					req.session.id = user.id
+					req.session.user_id = user.id
 					req.session.username = user.username
 					req.session.email = user.email
 					req.session.level = user.level
