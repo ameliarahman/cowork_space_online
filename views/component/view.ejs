@@ -1,79 +1,31 @@
 <% include ../partials/head%>
-
-
-		<!-- Header -->
+	<% include ../partials/basicmenu%>
 		<% include ../partials/menu%>
-			
-		<!-- Wrapper -->
+
 			<div id="wrapper">
-
-				<!-- Banner 
-					<section id="intro" class="main">
-						<span class="icon fa-diamond major"></span>
-						<h2>Magna porta maximus</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae<br />
-						malesuada turpis. Nam pellentesque in ac aliquam. Aliquam tempor<br />
-						mi porta egestas maximus lorem ipsum dolor.</p>
-						<ul class="actions">
-							<li><a href="#" class="button big">Learn More</a></li>
-						</ul>
-					</section>-->
-
-				<!-- Items -->
-					<section class="main items">
+				<section class="main items">
+					<% dataRooms.forEach((room)=>{ %>
 						<article class="item">
 							<header>
-								<a href="#"><img src="images/pic01.jpg" alt="" /></a>
-								<h3>Ruang Tidurnya Azharie	</h3>
+								<a href="/details/<%= room.id%>">
+									<img src="/images/<%=room.photo_url%>" alt="<%= room.name%>">
+								</a>
+								<h3>
+									<%= room.name%>
+								</h3>
 							</header>
-							<p>A beautifully designed workspace located in the heart of District 2. The Hive Saigon is designed for your way of working and living – a comfortable and welcoming environment where your business can thrive.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article class="item">
-							<header>
-								<a href="#"><img src="images/pic02.jpg" alt="" /></a>
-								<h3>Kostan nya Amel</h3>
-							</header>
-							<p>Highly supportive of encouraging active professional independents in the pursuit of their goals, BizDojo offers an efficient workspace made for getting things done, fostering a collaborative culture and connecting with other like minded individuals.
+							<p>
+								<%= room.address%>,
+									<%= room.city%>
 							</p>
 							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
+								<li><a href="/details/<%= room.id%>" class="button">More</a></li>
 							</ul>
 						</article>
-						<article class="item">
-							<header>
-								<a href="#"><img src="images/pic03.jpg" alt="" /></a>
-								<h3>Bekasi cuyy</h3>
-							</header>
-							<p>FThis is where work and life meld together. Another venue in the commercial and dynamic Shanghai hub of China under the umbrella of the Naked Hub brand, Fuxing Lu sits in the shopaholics dream destination where retail therapy can be had during your coffee break. Only steps away from the Shanxi Nan Lu Metro stop, you will have an expansive 360-degree view of the surrounding neighbourhood from your desk.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article class="item">
-							<header>
-								<a href="#"><img src="images/pic04.jpg" alt="" /></a>
-								<h3>Kebun Binatang Ragunan</h3>
-							</header>
-							<p>As the only designated MSC Malaysia Cybercentre in Johor, this is the place to be to achieve conducive business environment that provides the ecosystem to attract ICT investors and promote the growth of local ICT companies.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-					</section>
+						<%})%>
+				</section>
 
 				<!-- CTA -->
-					<section id="cta" class="main special">
-						<h2>Etiam veroeros lorem</h2>
-						<p>Phasellus ac augue ac magna auctor tempus proin<br />
-						accumsan lacus a nibh commodo in pellentesque dui<br />
-						in hac habitasse platea dictumst.</p>
-						<ul class="actions">
-							<li><a href="#" class="button big">Get Started</a></li>
-						</ul>
-					</section>
 
 				<!-- Main -->
 				<!--
@@ -85,24 +37,6 @@
 					</section>
 				-->
 
-				<!-- Footer -->
-					<footer id="footer">
-						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-						</ul>
-						<p class="copyright">&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.</p>
-					</footer>
 
-			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-<% include ../partials/footer%>
+				<% include ../partials/footer%>
