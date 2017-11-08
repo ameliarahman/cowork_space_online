@@ -1,22 +1,27 @@
 <%- include ../partials/head%>
-        <% if(dataRooms.length > 0){ 
-            dataRooms.forEach((room)=>{%>
-            <div class="container">
-                <div class="row">
-                    <%= room.name%>
-                </div>
-                <div class="row">
-                        <%= room.address%>
-                            <%= room.city%>
-
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <img src="/images/<%=room.photo_url%>">
-                    </div>
-                    
-                </div>
-            </div>
-            <% })}%>
+    <%- include ../component/menu_search%>
+            <div id="wrapper">
+                <section class="main items">
+                   <% if(dataRooms.length > 0){ 
+                        dataRooms.forEach((room)=>{%>
+                        <article class="item">
+                            <header>
+                                <a href="/details/<%= room.id%>">
+                                    <img src="/images/<%=room.photo_url%>" alt="<%= room.name%>">
+                                </a>
+                                <h3>
+                                    <%= room.name%>
+                                </h3>
+                            </header>
+                            <p>
+                                <%= room.address%>,
+                                    <%= room.city%>
+                            </p>
+                            <ul class="actions">
+                                <li><a href="/details/<%= room.id%>" class="button">More</a></li>
+                            </ul>
+                        </article>
+                        <% })}%>
+                </section>
 
                 <%- include ../partials/footer%>
