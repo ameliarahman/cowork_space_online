@@ -121,6 +121,13 @@ router.get('/delete/:id', function (req, res) {
     })
 })
 
+router.get('/details/:id', function (req, res) {
+    Model.Room.findById(req.params.id).then((dataRoom) => {
+        res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom })
+    }).catch((reason) => {
+        res.send(reason)
+    })
+})
 
 
 
