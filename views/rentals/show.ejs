@@ -9,6 +9,7 @@
                             <a href="/rooms/details/<%= room.id%>">
                                     <img src="/images/<%=room.photo_url%>" alt="<%= room.name%>">
                                 </a>
+<<<<<<< HEAD
                             <h3>
                                 <%= room.name%>
                             </h3>
@@ -23,5 +24,21 @@
                     </article>
                     <% })}%>
             </section>
+=======
+                                <h3>
+                                    <%= room.name%>
+                                </h3>
+                            </header>
+                            <p>
+                                <%= room.address%>,
+                                    <%= room.city%>
+                            </p>
+                            <ul class="actions">
+                                <li><a href="/rooms/details/<%= room.id%>" class="button">More</a></li>
+                            </ul>
+                        </article>
+                        <% })}%>
+                </section>
+>>>>>>> 84e059d4be9ae312e95ae3a394447b8f1465b482
 
             <%- include ../partials/footer%>

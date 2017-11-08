@@ -1,5 +1,6 @@
 <%- include ../partials/head%>
     <% include ../partials/basicmenu%>
+        <% include ../component/header_detail%>
 
         <div id="wrapper">
             <section class="main items">
@@ -28,9 +29,23 @@
                         <%= dataRoom.price%> / day
                     </p>
                     <ul class="actions">
-                        <li><a href="/booking/<%= dataRoom.id%>" class="button">booking</a></li>
+                      <%if(Session.isLogin){%>
+                        <li><a href="/booking/<%= dataRoom.id%>" class="button">Reservation Request</a></li>
+                      <%}else{%>
+                        <li><a href="/login" class="button">Login dulu</a></li>
+                      <%}%>
                     </ul>
                 </article>
             </section>
 
+<<<<<<< HEAD
 <% include ../partials/footer%>
+=======
+            <%if(Session.isLogin){%>
+              <% include ../rooms/booking%>
+            <%}%>
+
+            
+
+            <% include ../partials/footer%>
+>>>>>>> 84e059d4be9ae312e95ae3a394447b8f1465b482
