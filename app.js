@@ -22,4 +22,6 @@ app.use('/users', users)
 app.use('/booking', rent)
 
 
-app.listen(3000)
+app.listen(3000, ()=>{
+	console.log('hallo')
+})
