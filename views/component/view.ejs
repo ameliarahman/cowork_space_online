@@ -7,7 +7,7 @@
 					<% dataRooms.forEach((room)=>{ %>
 						<article class="item">
 							<header>
-								<a href="/details/<%= room.id%>">
+								<a href="/rooms/details/<%= room.id%>">
 									<img src="/images/<%=room.photo_url%>" alt="<%= room.name%>">
 								</a>
 								<h3>
@@ -19,7 +19,7 @@
 									<%= room.city%>
 							</p>
 							<ul class="actions">
-								<li><a href="/details/<%= room.id%>" class="button">More</a></li>
+								<li><a href="/rooms/details/<%= room.id%>" class="button">More</a></li>
 							</ul>
 						</article>
 						<%})%>

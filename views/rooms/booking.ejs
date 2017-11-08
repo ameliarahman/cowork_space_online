@@ -1,0 +1,36 @@
+<form style= " width: 200px" action="/rooms/details/4" method="POST">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" name="username" value="<%=Session.username%>">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" name="email" value="<%=Session.email%>">
+  </div>
+  
+  <div class="form-group ">
+    <label>to-date</label>
+    <div class="input-group">
+      <div class="input-group-addon">
+        <i class="fa fa-calendar">
+        </i>
+      </div>
+      <input class="form-control" id="date" name="from_date" placeholder="DD/MM/YYYY" type="text"/>
+    </div>
+  </div>
+  <div class="form-group ">
+    <label>from-date</label>
+    <div class="input-group">
+      <div class="input-group-addon">
+        <i class="fa fa-calendar">
+        </i>
+      </div>
+      <input class="form-control" id="date" name="to_date" placeholder="DD/MM/YYYY" type="text"/>
+    </div>
+  </div>
+  
+  <br>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<% include ../component/date%>

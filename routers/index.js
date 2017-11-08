@@ -8,6 +8,7 @@ const Sequelize = require('sequelize')
 const op = Sequelize.Op
 
 router.get('/', function (req, res) {
+	console.log(req.session)
     Model.Room.findAll({
         limit: 4
     }).then((dataRooms) => {
@@ -20,13 +21,6 @@ router.get('/', function (req, res) {
     // res.render('index/index', { pageTitle: 'Home' })
 })
 
-router.get('/details/:id', function (req, res) {
-    Model.Room.findById(req.params.id).then((dataRoom) => {
-        res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom })
-    }).catch((reason) => {
-        res.send(reason)
-    })
-})
 
 
 module.exports = router
