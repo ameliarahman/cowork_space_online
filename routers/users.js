@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const models = require('../models')
+const encript = require('../helpers/encript')
 
 router.get('/', (req, res) =>{
 	models.User.findAll().then(users=> {
@@ -43,6 +44,24 @@ router.post('/edit/:id', (req, res) =>{
 
 router.get('/signup', (req, res) => {
 	res.render('login/signup', {pageTitle:"Signup"})
+})
+
+router.post('/signup', (req, res)=>{
+
+	encript(req.body.password).then(hasil=>{
+		models.User.create({
+			username : req.body.username,
+			password : hasil,
+			first_name : req.body.first_name,
+			last_name : req.body.last_name,
+			email : req.body.email,
+			no_telp : req.body.no_telp,
+			level : 3
+		}).then(()=>{
+			res.redirect('/login')
+		})
+	})
+
 })
 
 module.exports = router
