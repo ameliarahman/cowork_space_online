@@ -3,7 +3,16 @@ const router = express.Router()
 const models = require('../models')
 const encript = require('../helpers/encript')
 
-router.get('/', (req, res) => {
+
+function checkLogin(req, res, next) {
+	if (req.session.isLogin) {
+		next()
+	} else {
+		res.redirect('/login')
+	}
+}
+
+router.get('/',checkLogin, (req, res) => {
 	if (req.session.level == 1) {
 		models.User.findAll().then(users => {
 			// res.send(users)
@@ -31,7 +40,7 @@ router.get('/delete/:id', (req, res) => {
 		})
 })
 
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id',checkLogin, (req, res) => {
 	models.User.findById(req.params.id).then(user => {
 		res.render('users/edit', { user, pageTitle: "Edit Users", Session: req.session })
 	})

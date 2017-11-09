@@ -13,8 +13,15 @@ module.exports = function (data) {
     let HelperOptions = {
         from: 'coworkspace.online@gmail.com',
         to: `${data.email}`,
-        Subject: "Invoice Booking Co-working Space",
-        text: `Nyoba dulu yoooo ${data.first_name} ${data.last_name} !!!`
+        subject: "Invoice Booking Co-working Space",
+        text: `
+            Nama : ${data.first_name} ${data.last_name} 
+            Email : ${data.email}  
+            No Telp : ${data.no_telp}
+            From Date : ${data.from_date}
+            To Date : ${data.to_date} 
+            Price Total : ${data.price_total}
+            `
     }
 
     transporter.sendMail(HelperOptions, (err, info) => {
