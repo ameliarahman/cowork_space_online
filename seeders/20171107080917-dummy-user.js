@@ -32,7 +32,7 @@ module.exports = {
         level : 1 
       },
       {
-        username : 'bellboy',
+        username : 'tukang gedung',
         password : '123',
         first_name : 'bell',
         last_name : 'grandos',
