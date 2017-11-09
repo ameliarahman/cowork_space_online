@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 const sendEmail = require('./../helpers/sendEmail')
 
 router.get('/', function (req, res) {
-    res.render('rentals/show', { pageTitle: 'Booking', dataRooms: '' })
+    res.render('rentals/show', { pageTitle: 'Booking', dataRooms: '', Session: req.session })
 })
 
 router.post('/search', function (req, res) {
@@ -22,7 +22,7 @@ router.post('/search', function (req, res) {
             }
         }
     }).then((dataRooms) => {
-        res.render('rentals/show', { pageTitle: 'Booking', dataRooms: dataRooms })
+        res.render('rentals/show', { pageTitle: 'Booking', dataRooms: dataRooms, Session: req.session })
     }).catch((reason) => {
         res.send(reason)
     })
@@ -31,7 +31,7 @@ router.post('/search', function (req, res) {
 
 router.get('/:id', function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
-        res.render('rentals/booking', { pageTitle: "Booking", dataRoom: dataRoom })
+        res.render('rentals/booking', { pageTitle: "Booking", dataRoom: dataRoom,  })
     })
 })
 

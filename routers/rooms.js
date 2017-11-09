@@ -7,14 +7,27 @@ const fs = require("fs");
 
 
 router.get('/', function (req, res) {
-    Model.Room.findAll().then((dataRooms) => {
-        // console.log(dataRooms)
-        res.render('rooms/room', { dataRooms: dataRooms, pageTitle: 'Co-working Space' })
-    })
+    if (req.session.level == 1) {
+        Model.Room.findAll().then((dataRooms) => {
+            // console.log(dataRooms)
+            res.render('rooms/room', { dataRooms: dataRooms, pageTitle: 'Co-working Space', Session: req.session })
+        })
+    } else if (req.session.level == 3) {
+        console.log("Halooooo apakah masuk sini?")
+        Model.Room.findAll({
+            where: {
+                UserId: req.session.user_id
+            }
+        }).then((dataRooms) => {
+            // console.log(dataRooms)
+            res.render('rooms/room', { dataRooms: dataRooms, pageTitle: 'Co-working Space', Session: req.session })
+        })
+    }
+
 })
 
 router.get('/add', function (req, res) {
-    res.render('rooms/add', { pageTitle: 'Add Space' })
+    res.render('rooms/add', { pageTitle: 'Add Space', Session: req.session })
 })
 
 router.post('/add', upload.single('room_pict'), function (req, res) {
@@ -30,7 +43,8 @@ router.post('/add', upload.single('room_pict'), function (req, res) {
             photo_url: req.file.filename,
             price: req.body.price,
             createdAt: new Date(),
-            updatedAt: new Date()
+            updatedAt: new Date(),
+            UserId: req.session.user_id
         }).then(() => {
             res.redirect('/rooms')
         })
@@ -43,7 +57,8 @@ router.post('/add', upload.single('room_pict'), function (req, res) {
             price: req.body.price,
             photo_url: `default.png`,
             createdAt: new Date(),
-            updatedAt: new Date()
+            updatedAt: new Date(),
+            UserId: req.session.user_id
         }).then(() => {
             res.redirect('/rooms')
         })
@@ -53,7 +68,7 @@ router.post('/add', upload.single('room_pict'), function (req, res) {
 router.get('/edit/:id', function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
         //console.log(dataRoom)
-        res.render('rooms/edit', { dataRoom: dataRoom, pageTitle: "Edit Room" })
+        res.render('rooms/edit', { dataRoom: dataRoom, pageTitle: "Edit Room", Session: req.session })
     }).catch((reason) => {
         res.redirect('/rooms')
     })
@@ -121,8 +136,6 @@ router.get('/delete/:id', function (req, res) {
     })
 })
 
-
-// <<<<<<< HEAD
 //         console.log(req.session)
 //         res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session: req.session })
 

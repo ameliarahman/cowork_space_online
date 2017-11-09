@@ -8,14 +8,13 @@ const Sequelize = require('sequelize')
 const op = Sequelize.Op
 
 router.get('/', function (req, res) {
-	
 
     req.session.onBooking = false
     Model.Room.findAll({
         limit: 4
     }).then((dataRooms) => {
         // res.send(dataRooms)
-        res.render('index/index', { pageTitle: 'Home', dataRooms: dataRooms })
+        res.render('index/index', { pageTitle: 'Home', dataRooms: dataRooms, Session: req.session})
     }).catch((reason) => {
         res.redirect('/')
     })
