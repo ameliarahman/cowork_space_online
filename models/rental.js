@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     RoomId: DataTypes.INTEGER,
     from_date: DataTypes.DATE,
     to_date: DataTypes.DATE,
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+    price_total: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
@@ -13,5 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+
+  Rental.asscociate = (models)=>{
+    Rental.belongsTo(models.Room)
+    Rental.belongsTo(models.User)
+  }
   return Rental;
 };

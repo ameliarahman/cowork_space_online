@@ -1,9 +1,59 @@
-<html>
+<%- include ../partials/head%>
+<% include ../partials/basicmenu%>
 
-<head>
-    <title>
-        Data Building
-    </title>
-</head>
 
-</html>
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Photo</th>
+                        <th>Building Name</th>
+                        <th>Price</th>
+                        <th>Facility</th>
+                        <th>Address</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% dataRooms.forEach((room, index)=>{%>
+
+                        <tr>
+                            <td>
+                                <%= index+1%>
+                            </td>
+                            <td>
+                                <img src="/images/<%=room.photo_url%>" style="width : 50%">
+                            </td>
+                            <td>
+                                <%= room.name%>
+                            </td>
+                            <td>
+                                <%= room.price%>/day
+                            </td>
+                            <td>
+                                <%= room.facility%>
+                            </td>
+                            <td>
+                                <%= room.address%>,
+                                    <%= room.city%>
+                            </td>
+                            <td>
+                                <a href="/rooms/edit/<%= room.id%>">Edit</a>
+                            </td>
+                            <td>
+                                <a href="/rooms/delete/<%= room.id%>">Delete</a>
+                            </td>
+                        </tr>
+                        <%})%>
+                </tbody>
+
+            </table>
+
+        </div>
+        <a href="/rooms/add" class="btn btn-info"> 
+                Add Building
+            </a>
+
+        <%- include ../partials/footer%>
