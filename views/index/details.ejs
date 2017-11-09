@@ -2,50 +2,46 @@
     <% include ../partials/basicmenu%>
         <% include ../component/header_detail%>
 
-        <div id="wrapper">
-            <section class="main items">
-                <article class="item">
+            <div id="wrapper">
+                <section class="main items">
+                    <article class="item">
 
-                    <img src="/images/<%=dataRoom.photo_url%>" alt="<%= dataRoom.name%>" style="width : 85%">
-                    <p>
-                        Building Name :
-                        <%= dataRoom.name%>
-                    </p>
-                    <p>
-                        Address :
-                        <%= dataRoom.address%>,
-                            <%= dataRoom.city%>
-                    </p>
-                    <p>
-                        Facility :
-                        <%= dataRoom.facility%>
-                    </p>
-                    <p>
-                        Capacity :
-                        <%= dataRoom.capacity%>
-                    </p>
-                    <p>
-                        Price :
-                        <%= dataRoom.price%> / day
-                    </p>
-                    <ul class="actions">
-                      <%if(Session.isLogin){%>
-                        <li><a href="/booking/<%= dataRoom.id%>" class="button">Reservation Request</a></li>
-                      <%}else{%>
-                        <li><a href="/login" class="button">Login dulu</a></li>
-                      <%}%>
-                    </ul>
-                </article>
-            </section>
+                        <img src="/images/<%=dataRoom.photo_url%>" alt="<%= dataRoom.name%>" style="width : 85%">
+                        <p>
+                            Building Name :
+                            <%= dataRoom.name%>
+                        </p>
+                        <p>
+                            Address :
+                            <%= dataRoom.address%>,
+                                <%= dataRoom.city%>
+                        </p>
+                        <p>
+                            Facility :
+                            <%= dataRoom.facility%>
+                        </p>
+                        <p>
+                            Capacity :
+                            <%= dataRoom.capacity%>
+                        </p>
+                        <p>
+                            Price :
+                            <%= dataRoom.price%> / day
+                        </p>
+                        <ul class="actions">
+                            <%if(Session.isLogin){%>
+                                <li><a href="/booking/<%= dataRoom.id%>" class="button">Reservation Request</a></li>
+                                <%}else{%>
+                                    <li><a href="/login" class="button">Login dulu</a></li>
+                                    <%}%>
+                        </ul>
+                    </article>
+                </section>
 
-<<<<<<< HEAD
-<% include ../partials/footer%>
-=======
-            <%if(Session.isLogin){%>
-              <% include ../rooms/booking%>
-            <%}%>
 
-            
+                <%if(Session.isLogin){%>
+                    <% include ../rooms/booking%>
+                        <%}%>
 
-            <% include ../partials/footer%>
->>>>>>> 84e059d4be9ae312e95ae3a394447b8f1465b482
+
+                            <% include ../partials/footer%>

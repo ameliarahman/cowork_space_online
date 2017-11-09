@@ -125,9 +125,7 @@ router.get('/details/:id', function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
 
         console.log(req.session)
-        res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session : req.session })
-
-       
+        res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session: req.session })
 
     }).catch((reason) => {
         res.send(reason)
@@ -136,7 +134,12 @@ router.get('/details/:id', function (req, res) {
 
 
 router.post('/details/:id', (req, res) => {
-    res.send(req.body)
+    Model.Room.findById(req.params.id).then((dataRoom) => {
+        //console.log(dataRoom, "sess", req.session, "body", req.body)
+        //kerjaanku sampe sini yaa
+        
+    })
+    //console.log(req.session, '======', req.body)
 })
 
 
