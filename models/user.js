@@ -12,8 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     level: DataTypes.INTEGER
   });
 
-  User.associate = (models) =>{
-    User.belongsToMany(models.Room, {through: models.Rental})
+  User.associate = (models) => {
+    User.hasMany(models.Room)
+    User.belongsToMany(models.Room, { through: models.Rental })
     User.hasMany(models.Rental)
   }
 

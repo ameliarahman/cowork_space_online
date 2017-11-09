@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     photo_url: DataTypes.STRING,
     price: DataTypes.STRING,
     city: DataTypes.STRING,
-    name : DataTypes.STRING
+    name: DataTypes.STRING,
+    UserId: DataTypes.INTEGER
   }, {
       classMethods: {
         associate: function (models) {
@@ -17,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
   Room.associate = (models) => {
+    Room.belongsTo(models.User)
     Room.belongsToMany(models.User, { through: models.Rental })
     Room.hasMany(models.Rental)
   }

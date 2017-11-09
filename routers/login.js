@@ -5,8 +5,8 @@ const decript = require('../helpers/decript')
 
 
 router.get('/', (req, res) => {
-	console.log(req.session)
 	res.render('login/login', { pageTitle: 'Login First' })
+
 })
 
 router.post('/', (req, res) => {
@@ -41,6 +41,12 @@ router.post('/', (req, res) => {
 		res.send(error)
 	})
 })
+
+router.get('/logout', function (req, res, next) {
+	req.session.destroy()
+	res.redirect('/login');
+});
+
 
 
 module.exports = router
