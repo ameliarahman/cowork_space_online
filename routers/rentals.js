@@ -8,6 +8,10 @@ const Sequelize = require('sequelize')
 const op = Sequelize.Op
 const nodemailer = require('nodemailer');
 const sendEmail = require('./../helpers/sendEmail')
+const countDay = require('./../helpers/count_days')
+const countPrice = require('./../helpers/count_price')
+const dateParsing = require('./../helpers/date_parsing')
+
 
 router.get('/', function (req, res) {
     res.render('rentals/show', { pageTitle: 'Booking', dataRooms: '', Session: req.session })
@@ -41,33 +45,45 @@ router.post('/:id', function (req, res) {
 })
 
 
-router.post('/details/:id', (req, res) => {
-    Model.Rental.create({
-
-    })
-})
-
 router.get('/details/:id', function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
-
-        console.log(req.query.username)
+       
         if(req.query.username){
            
+
             Model.User.findById(req.session.user_id).then(user =>{
+                user.count_booking_date = countDay(req.query.from_date, req.query.to_date)
+                user.price = countPrice(user.count_booking_date, dataRoom.price)
+                user.from_date = req.query.from_date
+                user.to_date = req.query.to_date
+               
+
                 req.session.onBooking = true
-                 console.log(req.session)
+                req.session.RoomId = req.params.id
                 res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session : req.session, user })
             })
-
         }
         else{
-            console.log('masuk else')
             res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session : req.session })
 
         }
 
     }).catch((reason) => {
         res.send(reason)
+    })
+})
+
+router.post('/details/:id', (req, res)=>{
+    // res.send(req.session.RoomId)
+    Model.Rental.create({
+        UserId : req.session.user_id,
+        RoomId : req.session.RoomId,
+        from_date : dateParsing(req.body.from_date),
+        to_date : dateParsing(req.body.to_date),
+        status : 'booked',
+        price_total : req.body.price_total
+    }).then(()=>{
+        res.redirect('/')
     })
 })
 

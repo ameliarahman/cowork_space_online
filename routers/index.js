@@ -14,6 +14,7 @@ router.get('/', function (req, res) {
         limit: 4
     }).then((dataRooms) => {
         // res.send(dataRooms)
+
         res.render('index/index', { pageTitle: 'Home', dataRooms: dataRooms, Session: req.session})
     }).catch((reason) => {
         res.redirect('/')
