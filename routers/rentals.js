@@ -14,13 +14,13 @@ const dateParsing = require('./../helpers/date_parsing')
 
 
 function checkLogin(req, res, next) {
-	if (req.session.isLogin) {
-		next()
-	} else {
-		res.redirect('/login')
-	}
+    if (req.session.isLogin) {
+        next()
+    } else {
+        res.redirect('/login')
+    }
 }
-router.get('/',checkLogin, function (req, res) {
+router.get('/', checkLogin, function (req, res) {
     res.render('rentals/show', { pageTitle: 'Booking', dataRooms: '', Session: req.session })
 })
 
@@ -40,9 +40,9 @@ router.post('/search', function (req, res) {
 
 })
 
-router.get('/:id',checkLogin, function (req, res) {
+router.get('/:id', checkLogin, function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
-        res.render('rentals/booking', { pageTitle: "Booking", dataRoom: dataRoom, })
+        res.render('rentals/booking', { pageTitle: "Booking", dataRoom: dataRoom })
     })
 })
 
@@ -54,7 +54,7 @@ router.get('/:id',checkLogin, function (req, res) {
 // })
 
 
-router.get('/details/:id',checkLogin, function (req, res) {
+router.get('/details/:id', function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
 
         if (req.query.username) {
@@ -69,7 +69,7 @@ router.get('/details/:id',checkLogin, function (req, res) {
 
                 req.session.onBooking = true
                 req.session.RoomId = req.params.id
-                res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session: req.session, user })
+                res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, user })
             })
         }
         else {
