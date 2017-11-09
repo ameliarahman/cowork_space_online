@@ -52,7 +52,6 @@ router.post('/add', upload.single('room_pict'), function (req, res) {
 
 router.get('/edit/:id', function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
-        //console.log(dataRoom)
         res.render('rooms/edit', { dataRoom: dataRoom, pageTitle: "Edit Room" })
     }).catch((reason) => {
         res.redirect('/rooms')
@@ -81,7 +80,6 @@ router.post('/edit/:id', upload.single('room_pict'), function (req, res) {
                 res.redirect(`/edit/${req.params.id}`)
             })
     } else {
-        //console.log("Haloooooooooooooooooooooooooooooooo")
         Model.Room.findById(req.params.id).then((dataRoom) => {
             let pict = dataRoom.photo_url
             Model.Room.update({
@@ -105,8 +103,6 @@ router.post('/edit/:id', upload.single('room_pict'), function (req, res) {
                 })
         })
     }
-    // console.log(req.body)
-
 })
 
 router.get('/delete/:id', function (req, res) {
@@ -121,15 +117,6 @@ router.get('/delete/:id', function (req, res) {
     })
 })
 
-
-// <<<<<<< HEAD
-//         console.log(req.session)
-//         res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session: req.session })
-
-//     }).catch((reason) => {
-//         res.send(reason)
-//     })
-// })
 
 
 router.post('/details/:id', (req, res) => {
