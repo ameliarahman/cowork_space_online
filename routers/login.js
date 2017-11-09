@@ -14,6 +14,7 @@ router.post('/', (req, res) => {
 		where: {
 			username: req.body.username
 		}
+
 	}).then(user => {
 
 		if (user) {

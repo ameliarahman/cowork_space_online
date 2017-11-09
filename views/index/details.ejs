@@ -43,5 +43,10 @@
                     <% include ../rooms/booking%>
                         <%}%>
 
+                            <%if(Session.onBooking){%>
+                                <% include ../rooms/check_invoice%>
+                                    <%}%>
 
-                            <% include ../partials/footer%>
+
+
+                                        <% include ../partials/footer%>
