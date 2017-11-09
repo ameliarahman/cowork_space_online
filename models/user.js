@@ -10,18 +10,14 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     no_telp: DataTypes.STRING,
     level: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
 
-  User.associate = (models) =>{
-    User.belongsToMany(models.Room, {through: models.Rental})
+  User.associate = (models) => {
+    User.hasMany(models.Room)
+    User.belongsToMany(models.Room, { through: models.Rental })
     User.hasMany(models.Rental)
   }
+
 
   return User;
 };

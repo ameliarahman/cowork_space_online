@@ -1,0 +1,16 @@
+<%- include ../partials/head%>
+    <% include ../partials/basicmenu%>
+
+        <div id="wrapper">
+            <section class="main items">
+                <article class="item">
+                    <form action="/booking/<%= dataRoom.id%>" method="POST">
+                        <input type="text" name="first_name" value="Amelia" />
+                        <input type="text" name="last_name" value="Rahman" />
+                        <input type="text" name="email" value="amel.rahman5@gmail.com" />
+
+                        <input type="submit" value="Book" />
+                    </form>
+                </article>
+            </section>
+            <% include ../partials/footer%>

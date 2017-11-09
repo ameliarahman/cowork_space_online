@@ -1,0 +1,28 @@
+<%- include ../partials/head%>
+    <%- include ../component/menu_search%>
+        <div id="wrapper">
+            <section class="main items">
+                <% if(dataRooms.length > 0){ 
+                        dataRooms.forEach((room)=>{%>
+                    <article class="item">
+                        <header>
+                            <a href="/booking/details/<%= room.id%>">
+                                    <img src="/images/<%=room.photo_url%>" alt="<%= room.name%>">
+                                </a>
+
+                            <h3>
+                                <%= room.name%>
+                            </h3>
+                        </header>
+                        <p>
+                            <%= room.address%>,
+                                <%= room.city%>
+                        </p>
+                        <ul class="actions">
+                            <li><a href="/booking/details/<%= room.id%>" class="button">More</a></li>
+                        </ul>
+                    </article>
+                    <% })}%>
+            </section>
+
+            <%- include ../partials/footer%>
