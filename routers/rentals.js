@@ -42,7 +42,7 @@ router.post('/search', function (req, res) {
 
 router.get('/:id', checkLogin, function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
-        res.render('rentals/booking', { pageTitle: "Booking", dataRoom: dataRoom })
+        res.render('rentals/booking', { pageTitle: "Booking", dataRoom: dataRoom, Session: req.session })
     })
 })
 
@@ -69,7 +69,8 @@ router.get('/details/:id', function (req, res) {
 
                 req.session.onBooking = true
                 req.session.RoomId = req.params.id
-                res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, user })
+
+                res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, user, Session: req.session })
             })
         }
         else {
