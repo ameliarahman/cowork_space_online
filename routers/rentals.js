@@ -54,7 +54,7 @@ router.get('/:id',checkLogin, function (req, res) {
 // })
 
 
-router.get('/details/:id',checkLogin, function (req, res) {
+router.get('/details/:id', function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
 
         if (req.query.username) {
