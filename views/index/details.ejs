@@ -1,49 +1,85 @@
 <%- include ../partials/head%>
     <% include ../partials/basicmenu%>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-2">
-                <img src="/images/<%=dataRoom.photo_url%>" alt="<%= dataRoom.name%>" style="width:50%">
-                <p>
-                    Building Name :
-                    <%= dataRoom.name%>
-                </p>
-                <p>
-                    Address :
-                    <%= dataRoom.address%>,
-                        <%= dataRoom.city%>
-                </p>
-                <p>
-                    Facility :
-                    <%= dataRoom.facility%>
-                </p>
-                <p>
-                    Capacity :
-                    <%= dataRoom.capacity%>
-                </p>
-                <p>
-                    Price :
-                    <%= dataRoom.price%> / day
-                </p>
-                <ul class="actions">
-                    <%if(Session.isLogin){%>
-                        <li><a href="/booking/<%= dataRoom.id%>" class="button">Reservation Request</a></li>
-                        <%}else{%>
-                            <li><a href="/login" class="button">Login dulu</a></li>
-                            <%}%>
-                                <%if(Session.isLogin){%>
-                                    <% include ../rooms/booking%>
-                                        <%}%>
 
-                                            <%if(Session.onBooking){%>
-                                                <% include ../rooms/check_invoice%>
-                                                    <%}%>
+            <div id="wrapper" style="padding-top: 0">
+                <section id="intro" class="main">
+                        <img src="/images/<%=dataRoom.photo_url%>" alt="<%= dataRoom.name%>" style="width : 100%">
+                        <br><br>
+                        <span class="icon fa-diamond major"></span>
+                        <h2><i class="fa fa-building" aria-hidden="true">
+                            Building Name :
+                            <%= dataRoom.name%>
+                            </i>
+                        </h2>
+                        <h5>
+                            Address :
+                            <%= dataRoom.address%>,
+                                <%= dataRoom.city%>
+                        </h5>
+                        <h5><i class="fa fa-motorcycle" aria-hidden="true"> Facility :
+                            <%= dataRoom.facility%></i>
+                            
+                        </h5>
+                        <h5>
+                            <i class="fa fa-male" aria-hidden="true">
+                            Capacity :
+                            <%= dataRoom.capacity%>
+                            </i>
+                        </h5>
+                        <h5>
+                            Price :
+                            <i class="fa fa-usd" aria-hidden="true">
+                            <%= dataRoom.price%> </i>/ day
+                        </h5>
+                        <br>
+                        <ul class="actions">
+                            <%if(Session.isLogin){%>
+                                <li>
+                                    <input type="button" class="button big" id="reserved" onclick="myFunction()" value="Reservation Request">
+                                    </input><br><br>
+                                    <div id="cancel" style="display: none;">
+                                        <input type="button" class="button big" id="reserved" onclick="cancel()" value="x">
+                                        </input>
+                                    </div>
 
+
+                                </li>
+                                <%}else{%>
+                                    <li><a href="/login" class="button big">Login dulu</a></li>
+                                    <%}%>
+                        </ul>
+                        
+
+                    </article>
+                </section>
+
+
+                <div id="booking" style="display: none;">
+                   <%if(Session.isLogin){%>
+                        <% include ../rooms/booking%>
+                    <%}%> 
+                </div>
+                
+
+                            <%if(Session.onBooking){%>
+                                <% include ../rooms/check_invoice%>
+                                    <%}%>
+
+
+
+                                        <% include ../partials/footer%>
             </div>
-        </div>
+<script>
+    function myFunction() {
+        document.getElementById("booking").style.display = "block"
+        document.getElementById("cancel").style.display = "block"
+    }
+
+    function cancel() {
+        document.getElementById("booking").style.display = "none"
+        document.getElementById("cancel").style.display = "none"
+    }
 
 
 
-
-
-
-        <% include ../partials/footer%>
+</script>
