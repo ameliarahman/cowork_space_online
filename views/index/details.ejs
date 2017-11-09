@@ -35,14 +35,14 @@
                         <ul class="actions">
                             <%if(Session.isLogin){%>
                                 <li>
-                                    <input type="button" class="button big" id="reserved" onclick="myFunction()" value="Reservation Request">
-                                    </input><br><br>
-                                    <div id="cancel" style="display: none;">
-                                        <input type="button" class="button big" id="reserved" onclick="cancel()" value="x">
+                                    <div id="reserved" style="display: block;" >
+                                        <input type="button" class="button big"  onclick="myFunction()" value="Reservation Request" >
                                         </input>
                                     </div>
-
-
+                                    <div id="cancel" style="display: none;">
+                                        <input type="button" class="button big" onclick="cancel()" value="x">
+                                        </input>
+                                    </div>
                                 </li>
                                 <%}else{%>
                                     <li><a href="/login" class="button big">Login dulu</a></li>
@@ -73,11 +73,14 @@
     function myFunction() {
         document.getElementById("booking").style.display = "block"
         document.getElementById("cancel").style.display = "block"
+        document.getElementById("reserved").style.display = "none"
     }
 
     function cancel() {
         document.getElementById("booking").style.display = "none"
         document.getElementById("cancel").style.display = "none"
+        document.getElementById("reserved").style.display = "block"
+    
     }
 
 
