@@ -69,6 +69,7 @@ router.get('/details/:id', function (req, res) {
 
                 req.session.onBooking = true
                 req.session.RoomId = req.params.id
+
                 res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, user, Session: req.session })
             })
         }
