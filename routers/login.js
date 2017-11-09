@@ -3,6 +3,7 @@ const router = express.Router()
 const models = require('../models')
 const decript = require('../helpers/decript')
 
+
 router.get('/', (req, res) => {
 	console.log(req.session)
 	res.render('login/login', { pageTitle: 'Login First' })

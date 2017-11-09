@@ -8,8 +8,6 @@ const Sequelize = require('sequelize')
 const op = Sequelize.Op
 
 router.get('/', function (req, res) {
-	
-
     req.session.onBooking = false
     Model.Room.findAll({
         limit: 4
