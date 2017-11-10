@@ -33,7 +33,7 @@ router.post('/search', function (req, res) {
             }
         }
     }).then((dataRooms) => {
-        res.render('rentals/show', { pageTitle: 'Booking', dataRooms: dataRooms, Session: req.session })
+        res.render('rentals/show', { pageTitle: 'Booking', dataRooms: dataRooms, Session: req.session, message: '' })
     }).catch((reason) => {
         res.send(reason)
     })
@@ -42,7 +42,7 @@ router.post('/search', function (req, res) {
 
 router.get('/:id', checkLogin, function (req, res) {
     Model.Room.findById(req.params.id).then((dataRoom) => {
-        res.render('rentals/booking', { pageTitle: "Booking", dataRoom: dataRoom, Session: req.session })
+        res.render('rentals/booking', { pageTitle: "Booking", dataRoom: dataRoom, Session: req.session, message: '' })
     })
 })
 
@@ -65,16 +65,14 @@ router.get('/details/:id', function (req, res) {
                 user.price = countPrice(user.count_booking_date, dataRoom.price)
                 user.from_date = req.query.from_date
                 user.to_date = req.query.to_date
-
-
                 req.session.onBooking = true
                 req.session.RoomId = req.params.id
 
-                res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, user, Session: req.session })
+                res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, user, Session: req.session, message: '' })
             })
         }
         else {
-            res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session: req.session })
+            res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session: req.session, message: '' })
 
         }
 
@@ -84,7 +82,36 @@ router.get('/details/:id', function (req, res) {
 })
 
 router.post('/details/:id', (req, res) => {
-    // res.send(req.session.RoomId)
+
+    // if (req.body.price_total < 0) {
+    //     console.log("Yoooooooooooooooooooooo")
+    //     Model.Room.findById(req.params.id).then((dataRoom) => {
+
+    //         if (req.query.username) {
+
+
+    //             Model.User.findById(req.session.user_id).then(user => {
+    //                 user.count_booking_date = countDay(req.query.from_date, req.query.to_date)
+    //                 user.price = countPrice(user.count_booking_date, dataRoom.price)
+    //                 user.from_date = req.query.from_date
+    //                 user.to_date = req.query.to_date
+
+
+    //                 req.session.onBooking = true
+    //                 req.session.RoomId = req.params.id
+
+    //                 res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, user, Session: req.session, message: 'End date should be after start date' })
+    //             })
+    //         }
+    //         else {
+    //             res.render('index/details', { pageTitle: "Detail Room", dataRoom: dataRoom, Session: req.session, message: '' })
+
+    //         }
+
+    //     }).catch((reason) => {
+    //         res.send(reason)
+    //     })
+    // } else {
     Model.Rental.create({
         UserId: req.session.user_id,
         RoomId: req.session.RoomId,
@@ -96,6 +123,9 @@ router.post('/details/:id', (req, res) => {
         sendEmail(req.body)
         res.redirect('/')
     })
+    // }
+    // res.send(req.session.RoomId)
+
 })
 
 

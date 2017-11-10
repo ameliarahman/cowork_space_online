@@ -14,12 +14,14 @@ module.exports = function (data) {
         from: 'coworkspace.online@gmail.com',
         to: `${data.email}`,
         subject: "Invoice Booking Co-working Space",
-        text: `
-            Nama : ${data.first_name} ${data.last_name} 
-            Email : ${data.email}  
-            No Telp : ${data.no_telp}
-            From Date : ${data.from_date}
-            To Date : ${data.to_date} 
+        html: `
+            <h2> Invoice Booking Co-working Space </h2>
+            <br>
+            Nama : ${data.first_name} ${data.last_name} <br> 
+            Email : ${data.email}  <br>
+            No Telp : ${data.no_telp} <br>
+            From Date : ${data.from_date} <br>
+            To Date : ${data.to_date} <br>
             Price Total : ${data.price_total}
             `
     }
