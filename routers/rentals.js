@@ -84,7 +84,7 @@ router.get('/details/:id', function (req, res) {
 })
 
 router.post('/details/:id', (req, res) => {
-    // res.send(req.session.RoomId)
+    // res.send(req.body)
     Model.Rental.create({
         UserId: req.session.user_id,
         RoomId: req.session.RoomId,

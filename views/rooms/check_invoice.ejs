@@ -1,38 +1,38 @@
 
-<form action="/booking/details/<%=dataRoom%>" method="POST" style="width: 200px; margin: auto;">
+<form action="/booking/details/<%=dataRoom.id%>" method="POST" style="width: 200px; margin: auto;">
   <h3>Invoice</h3>
   <br>
   <div class="form-group">
     <label>Firstname:</label>
-    <input type="text" class="form-control" name="first_name" value="<%=user.username%>" disabled>
+    <input type="text" class="form-control" name="first_name" value="<%=user.username%>" readonly="readonly">
   </div>
   <div class="form-group">
     <label>Lastname:</label>
-    <input type="text" class="form-control" name="last_name" value="<%=user.last_name%>" disabled>
+    <input type="text" class="form-control" name="last_name" value="<%=user.last_name%>" readonly="readonly">
   </div>
   <div class="form-group">
     <label>Email:</label>
-    <input type="text" class="form-control" name="email" value="<%=user.email%>" disabled>
+    <input type="text" class="form-control" name="email" value="<%=user.email%>" >
   </div>
   <div class="form-group">
     <label>No.Telp:</label>
-    <input type="text" class="form-control" name="no_telp" value="<%=user.no_telp%>" disabled>
+    <input type="text" class="form-control" name="no_telp" value="<%=user.no_telp%>" readonly="readonly">
   </div>
   <div class="form-group">
     <label>Reserved Days</label>
-    <input type="text" class="form-control" name="date" value="<%=user.count_booking_date%>" disabled>
+    <input type="text" class="form-control" name="date" value="<%=user.count_booking_date%>" readonly="readonly">
   </div>
   <div class="form-group">
     <label>From Date</label>
-    <input type="text" class="form-control" name="from_date" value="<%=user.from_date%>" disabled>
+    <input type="text" class="form-control" name="from_date" value="<%=user.from_date%>" readonly="readonly">
   </div>
   <div class="form-group">
     <label>To Date</label>
-    <input type="text" class="form-control" name="to_date" value="<%=user.to_date%>" disabled>
+    <input type="text" class="form-control" name="to_date" value="<%=user.to_date%>" readonly="readonly">
   </div>
   <div class="form-group">
     <label>Total Price</label>
-    <input type="text" class="form-control" name="price_total" value="<%=user.price%>" disabled>
+    <input type="text" class="form-control" name="price_total" value="<%=user.price%>" readonly="readonly">
   </div>
   
   <button type="submit" class="btn btn-default">Submit</button>
