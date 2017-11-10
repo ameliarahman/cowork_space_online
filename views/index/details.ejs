@@ -1,35 +1,36 @@
 <%- include ../partials/head%>
     <% include ../partials/basicmenu%>
-
+        <%= message%>
             <div id="wrapper" style="padding-top: 0">
                 <section id="intro" class="main">
-                        <img src="/images/<%=dataRoom.photo_url%>" alt="<%= dataRoom.name%>" style="width : 100%">
-                        <br><br>
-                        <span class="icon fa-diamond major"></span>
-                        <h2><i class="fa fa-building" aria-hidden="true">
+                    <img src="/images/<%=dataRoom.photo_url%>" alt="<%= dataRoom.name%>" style="width : 100%">
+                    <br><br>
+                    <span class="icon fa-diamond major"></span>
+                    <h2><i class="fa fa-building" aria-hidden="true">
                             Building Name :
                             <%= dataRoom.name%>
                             </i>
-                        </h2>
-                        <h5>
-                            Address :
-                            <%= dataRoom.address%>,
-                                <%= dataRoom.city%>
-                        </h5>
-                        <h5><i class="fa fa-motorcycle" aria-hidden="true"> Facility :
+                    </h2>
+                    <h5>
+                        Address :
+                        <%= dataRoom.address%>,
+                            <%= dataRoom.city%>
+                    </h5>
+                    <h5><i class="fa fa-motorcycle" aria-hidden="true"> Facility :
                             <%= dataRoom.facility%></i>
-                            
-                        </h5>
-                        <h5>
-                            <i class="fa fa-male" aria-hidden="true">
+
+                    </h5>
+                    <h5>
+                        <i class="fa fa-male" aria-hidden="true">
                             Capacity :
                             <%= dataRoom.capacity%>
                             </i>
-                        </h5>
-                        <h5>
-                            Price :
-                            <i class="fa fa-usd" aria-hidden="true">
+                    </h5>
+                    <h5>
+                        Price :
+                        <i class="fa fa-usd" aria-hidden="true">
                             <%= dataRoom.price%> </i>/ day
+
                         </h5>
                         <br>
                         <ul class="actions">
@@ -48,23 +49,21 @@
                                     <li><a href="/login" class="button big">Login dulu</a></li>
                                     <%}%>
                         </ul>
-                        
 
                     </article>
                 </section>
 
 
                 <div id="booking" style="display: none;">
-                   <%if(Session.isLogin){%>
+                    <%if(Session.isLogin){%>
                         <% include ../rooms/booking%>
-                    <%}%> 
+                            <%}%>
                 </div>
-                
 
-                            <%if(Session.onBooking){%>
-                                <% include ../rooms/check_invoice%>
-                                    <%}%>
 
+                <%if(Session.onBooking){%>
+                    <% include ../rooms/check_invoice%>
+                        <%}%>
 
 
                                         <% include ../partials/footer%>
@@ -82,7 +81,3 @@
         document.getElementById("reserved").style.display = "block"
     
     }
-
-
-
-</script>

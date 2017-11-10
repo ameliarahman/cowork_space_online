@@ -20,15 +20,11 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.set('view engine', 'ejs');
-
-
 app.use('/login', login)
 app.use('/', index)
 app.use('/rooms', room)
 app.use('/users', users)
 app.use('/booking', rent)
 
+app.listen(process.env.PORT || '3000')
 
-app.listen(3000, () => {
-  console.log('hallo')
-})
